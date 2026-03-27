@@ -334,6 +334,19 @@ main {
 }
 .ft-copy { color: var(--ink3) !important; font-size: .52rem !important; }
 
+.lk-vt .lk-icon { border-color: rgba(13,45,107,.25); background: rgba(13,45,107,.06); }
+.lk-vt:hover { border-color: rgba(0,170,255,.3); box-shadow: 0 10px 32px rgba(0,170,255,.12); }
+.lk-vt .lk-cta { color: #00aaff; }
+.lk-pulse-vt { border-color: rgba(0,170,255,.22); }
+.lk-icon-img img { width: 26px; height: 26px; object-fit: contain; }
+
+.lk-wt { border-color: rgba(0,232,158,.14); background: rgba(0,232,158,.035); }
+.lk-wt:hover { border-color: rgba(0,232,158,.4); box-shadow: 0 10px 32px rgba(0,232,158,.14); }
+
+.lk-vt { border-color: rgba(0,232,158,.14); background: rgba(0,232,158,.035); }
+.lk-vt:hover { border-color: rgba(0,232,158,.4); box-shadow: 0 10px 32px rgba(0,232,158,.14); }
+
+.lk-vt .lk-cta { color: var(--green); }
 /* ── ENTRADA ─────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
