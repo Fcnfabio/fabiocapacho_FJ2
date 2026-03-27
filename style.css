@@ -91,15 +91,15 @@ main {
 }
 
 .av-ring {
-  position: absolute; inset: -6px; border-radius: 50%;
-  border: 1.5px solid transparent;
-  /* Gradiente como borde via background-clip */
-  background: conic-gradient(var(--green), var(--cyan), var(--violet), var(--green)) border-box;
+  /* ...lo que ya tienes... */
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out; mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);  /* ← agrega */
+  mask-composite: exclude;                                                   /* ← agrega */
   animation: spin 6s linear infinite;
   will-change: transform;
 }
+
 .av-ring.r2 {
   inset: -13px; border-width: 1px;
   background: conic-gradient(transparent 0%, var(--cyan) 40%, transparent 70%) border-box;
