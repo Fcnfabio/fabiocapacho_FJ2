@@ -57,7 +57,6 @@ body {
   display: flex; align-items: center; gap: 20px;
   white-space: nowrap;
   font-family: var(--f-mono); font-size: .58rem; letter-spacing: .05em;
-  /* CSS animation más liviana que scroll JS */
   animation: tk 30s linear infinite;
   padding-left: 100vw;
   will-change: transform;
@@ -91,11 +90,13 @@ main {
 }
 
 .av-ring {
-  /* ...lo que ya tienes... */
+  position: absolute; inset: -6px; border-radius: 50%;
+  border: 1.5px solid transparent;
+  background: conic-gradient(var(--green), var(--cyan), var(--violet), var(--green)) border-box;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: destination-out;
-  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);  /* ← agrega */
-  mask-composite: exclude;                                                   /* ← agrega */
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
   animation: spin 6s linear infinite;
   will-change: transform;
 }
@@ -244,7 +245,6 @@ main {
   border: 1px solid rgba(255,255,255,.06);
   background: rgba(255,255,255,.025);
   transition: transform .22s ease, border-color .22s, box-shadow .22s;
-  /* GPU layer hint */
   will-change: transform;
 }
 .lk:hover {
@@ -264,6 +264,23 @@ main {
 }
 .lk:hover .lk-icon { transform: scale(1.08) rotate(-4deg); }
 .lk-icon svg { width: 20px; height: 20px; }
+
+/* ── LOGOS PNG ───────────────────────────────────── */
+.lk-icon-img {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.07);
+  background: rgba(255,255,255,.04);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  padding: 5px;
+  transition: transform .22s ease;
+}
+.lk:hover .lk-icon-img { transform: scale(1.08) rotate(-4deg); }
+.lk-icon-img img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
 
 .lk-body { flex: 1; display: flex; flex-direction: column; gap: 1px; }
 .lk-cta {
@@ -290,10 +307,16 @@ main {
 }
 .lk:hover .lk-arr { transform: translate(3px,-3px); color: var(--ink); }
 
-/* Colores por red */
+/* ── COLORES POR RED ─────────────────────────────── */
 .lk-wt { border-color: rgba(0,232,158,.14); background: rgba(0,232,158,.035); }
-.lk-wt .lk-icon { color: var(--green); border-color: rgba(0,232,158,.18); background: rgba(0,232,158,.07); }
+.lk-wt .lk-icon-img { border-color: rgba(0,232,158,.18); background: rgba(0,232,158,.07); }
 .lk-wt:hover { border-color: rgba(0,232,158,.4); box-shadow: 0 10px 32px rgba(0,232,158,.14); }
+.lk-wt .lk-cta { color: var(--green); }
+
+.lk-vt { border-color: rgba(0,232,158,.14); background: rgba(0,232,158,.035); }
+.lk-vt .lk-icon-img { border-color: rgba(0,232,158,.18); background: rgba(0,232,158,.07); }
+.lk-vt:hover { border-color: rgba(0,232,158,.4); box-shadow: 0 10px 32px rgba(0,232,158,.14); }
+.lk-vt .lk-cta { color: var(--green); }
 
 .lk-ig .lk-icon { color: #e1306c; }
 .lk-ig:hover { border-color: rgba(225,48,108,.28); box-shadow: 0 10px 32px rgba(225,48,108,.12); }
@@ -311,26 +334,16 @@ main {
 .lk-pf:hover { border-color: rgba(124,92,252,.35); box-shadow: 0 10px 32px rgba(124,92,252,.14); }
 .lk-pf .lk-cta { color: var(--violet); }
 
-/* Pulse ring en Weltrade */
+/* ── PULSE RINGS ─────────────────────────────────── */
 .lk-pulse {
   position: absolute; inset: -2px; border-radius: 15px;
   border: 1px solid rgba(0,232,158,.22);
   animation: pRing 2.4s ease-in-out infinite;
   pointer-events: none;
 }
-
-.lk-icon-img {
-  width: 40px;
-  height: 40px;
-  padding: 4px;
+.lk-pulse-vt {
+  border-color: rgba(0,232,158,.22);
 }
-
-.lk-icon-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 @keyframes pRing {
   0%,100%{ transform:scale(1); opacity:.5; }
   50%{ transform:scale(1.01); opacity:0; }
@@ -347,19 +360,6 @@ main {
 }
 .ft-copy { color: var(--ink3) !important; font-size: .52rem !important; }
 
-.lk-vt .lk-icon { border-color: rgba(13,45,107,.25); background: rgba(13,45,107,.06); }
-.lk-vt:hover { border-color: rgba(0,170,255,.3); box-shadow: 0 10px 32px rgba(0,170,255,.12); }
-.lk-vt .lk-cta { color: #00aaff; }
-.lk-pulse-vt { border-color: rgba(0,170,255,.22); }
-.lk-icon-img img { width: 26px; height: 26px; object-fit: contain; }
-
-.lk-wt { border-color: rgba(0,232,158,.14); background: rgba(0,232,158,.035); }
-.lk-wt:hover { border-color: rgba(0,232,158,.4); box-shadow: 0 10px 32px rgba(0,232,158,.14); }
-
-.lk-vt { border-color: rgba(0,232,158,.14); background: rgba(0,232,158,.035); }
-.lk-vt:hover { border-color: rgba(0,232,158,.4); box-shadow: 0 10px 32px rgba(0,232,158,.14); }
-
-.lk-vt .lk-cta { color: var(--green); }
 /* ── ENTRADA ─────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
@@ -375,8 +375,13 @@ main {
   .lk   { padding: 11px 13px; gap: 11px; }
   .lk-icon { width: 36px; height: 36px; }
   .lk-icon svg { width: 17px; height: 17px; }
+  .lk-icon-img { width: 36px; height: 36px; }
 }
 
+@media (min-width: 600px) {
+  main { padding: 60px 32px 64px; }
+  .lk:hover { transform: translateY(-3px); }
+}
 @media (min-width: 600px) {
   main { padding: 60px 32px 64px; }
   .lk:hover { transform: translateY(-3px); }
